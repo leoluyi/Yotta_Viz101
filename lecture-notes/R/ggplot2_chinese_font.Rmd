@@ -1,0 +1,42 @@
+---
+title: "Yotta 資料視覺化實戰"
+subtitle: "ggplot2 中文字型設置"
+author: "木刻思 - YJ"
+output:
+  prettydoc::html_pretty:
+    toc: yes
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Mac
+
+ggplot2: 
+
+```{r, eval=FALSE}
+# 在最後加上
+p + theme(text = element_text(family = "STHeiti"))
+
+# 若有用到 geom_text 則要在裡面加 family = "STHeiti"
+geom_text(family = "STHeiti")
+```
+
+輸出:
+
+```{r, eval=FALSE}
+ggsave(device = "png", type = "cairo")`
+```
+
+### Linux
+
+基本上沒問題
+
+### Windows
+
+基本上沒問題
+
+
