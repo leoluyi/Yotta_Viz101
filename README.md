@@ -1,5 +1,31 @@
 # 資料視覺化實戰 | Data Viz 101 : How to communicate with your data
 
+## 1-4 Tidy data with R - tidyvers
+
+- a-chien.blogspot.com/2017/07/tidy-data.html
+
+## 1-5 Tidy data with Python - Pandas
+
+- https://tomaugspurger.github.io/modern-5-tidy.html
+- http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/
+
+## 2-3 R - 環境設置 & 中文字型設置
+
+## 2-4 ggplot2 基礎
+
+## 2-5 ggplot2 教學 1：Movie
+
+## 2-6 ggplot2 教學 2：7-11
+
+## 3-4 Pandas viz 基礎
+
+- [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
+
+## 3-5 Pandas viz 教學 1：Lottery
+
+## 3-6 Pandas viz 教學 2：Salary
+
+
 ## 4-1 好圖表要素 1 : 什麼是好的圖表？
 
 - 資料視覺化的歷史 --- 不同解讀圖表的面向？
@@ -29,8 +55,9 @@
 
 ## 4-6 修正一張歪圖 : Chart junk 圖形修正實作
 
+- 範例：公司生產力
 - ggplot2 實作
-- Excel 實作
+- theme 設定
 
 ## 4-7 有檢查不出錯 : Tools for Thinking about Design : Checklist
 
@@ -45,6 +72,5 @@
 - [human-perception](https://medium.com/@kennelliott/39-studies-about-human-perception-in-30-minutes-4728f9e31a73)
 - [Plotly line plot](https://plot.ly/~balzer82/2)
 - [plotlyblog](https://plotlyblog.tumblr.com/post/97004982472/5-plots-on-gender-you-have-to-see)
-- [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
 - [python-graph-gallery](https://python-graph-gallery.com/)
 - [seaborn new plot](http://pbpython.com/seaborn09.html)

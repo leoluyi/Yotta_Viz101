@@ -100,7 +100,7 @@ knitr::kable(preg_long)
 ### 狀況1: 欄位名稱是值
 
 ```{r}
-pew <- read_csv("http://bit.ly/pew-csv")
+pew <- read_csv("http://bit.ly/pew-raw")
 ```
 
 ```{r, echo=FALSE}
@@ -123,7 +123,9 @@ pew %>%
 ```
 
 
-### 狀況2: Multiple variables stored in one column
+### 狀況2: 一個欄位中有多個變數的值
+
+容易發生在源頭是 Excel 的資料
 
 ### 狀況3: 
 
