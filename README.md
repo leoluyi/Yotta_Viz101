@@ -1,4 +1,6 @@
-# 資料視覺化實戰 | Data Viz 101 : How to communicate with your data
+# 資料視覺化實戰 | Data Viz 101
+
+How to communicate with your data
 
 ## 1-4 [Tidy data with R - tidyverse](lecture-notes/R/R_tidydata.html)
 
@@ -19,7 +21,7 @@
 
 - [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
 
-## [3-5 Pandas viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/#)
+## 3-5 [Pandas viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/#)
 
 ## 4-1 好圖表要素 1 : 什麼是好的圖表？
 
