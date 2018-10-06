@@ -39,11 +39,10 @@ old_theme <- theme_set(theme_light())
 - [`ggplot2`](http://ggplot2.org) 是一個很強大的資料探索及視覺化工具，
 是許多最有影響力的 R 套件開發者 [Hadley Wickham](http://had.co.nz) 所開發
 - 所有繪圖函數都有背後的視覺化邏輯（[Grammar of Graphics](http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448)）
-
-__Grammar of Graphics__ 的作用就是幫助我們將圖表拆解成個別的元素，
+- __Grammar of Graphics__ 的作用就是幫助我們將圖表拆解成個別的元素，
 然後將這些元素按照邏輯個別操作，***正確***又***簡單***地達到圖表的目的
 
-> It is far better to learn a language by actually speaking it!
+<img src="https://images-na.ssl-images-amazon.com/images/I/41ZIHtc9TJL._SX327_BO1,204,203,200_.jpg" style="max-height:200px">
 
 ## 一個例子學會畫圖：mpg 🚗油耗資料
 
@@ -221,6 +220,9 @@ ggplot(data = mpg) +
 
 <img src="img/aes-search.png" style="max-height:40%; max-width:auto;">
 
+- 用 [ggplot2 官方大抄](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+
+[![ggplot2-cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-visualization-cheatsheet-thumbs.png)](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 
 ## `ggplot()`
 
@@ -279,33 +281,32 @@ cowplot::plot_grid(p1, p2)
 - Geom 決定圖表呈現的「**幾何圖形物件**」，也就是你眼睛看到的資料呈現方式
 - `geom_<xxx>()`
 
-```{r}
+```{r, eval=FALSE}
 ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
-```
 
-```{r}
 ggplot(data = mpg) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="img/chart-types.png" style="height:480px; max-width:auto;">
+Different geom:
+
+<img src="img/chart-types.png" style="max-width:50%;">
 
 - 因為 Geoms 真的太多了，通常要用的時候再去查: [RStudio - ggplot2 Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 - 如同前面所述，不同 Geoms 有不同支援的 Aesthetics
 
 <img src="img/aes-search.png" style="max-height:40%; max-width:auto;">
 
-#### (附錄) Geoms -- Cheatsheet
+<!-- #### (附錄) Geoms -- Cheatsheet -->
 
-<img src="img/visualization-geoms-1.png" style="max-height:auto; max-width:100%;">
+<!-- <img src="img/visualization-geoms-1.png" style="max-height:auto; max-width:100%;"> -->
 
-<img src="img/visualization-geoms-2.png" style="max-height:auto; max-width:100%;">
+<!-- <img src="img/visualization-geoms-2.png" style="max-height:auto; max-width:100%;"> -->
 
-<img src="img/visualization-geoms-3.png" style="max-height:auto; max-width:100%;">
+<!-- <img src="img/visualization-geoms-3.png" style="max-height:auto; max-width:100%;"> -->
 
-<img src="img/visualization-geoms-4.png" style="max-height:auto; max-width:100%;">
-
+<!-- <img src="img/visualization-geoms-4.png" style="max-height:auto; max-width:100%;"> -->
 
 ### Bar Charts
 
@@ -346,18 +347,6 @@ ggplot(data = mpg) +
 
 ### Stats (Geom 的一體兩面)
 
-- `stat_<xxx>()`
-- 有些 Geom (例如 scatterplot) 畫的是 **raw value** (stat_identity)
-- 有些 Geom (例如 barplot)會計算新的 stat (e.g., count) 以供畫圖
-- 使用 `geom_<xxx>()` 時，要注意預設的 stat 是什麼
-
-`stat = "identity"`
-
-<img src="img/visualization-stat-point.png" style="height:520px; max-width:100%;">
-
-
-#### 回頭來看 Aesthetic Mapping
-
 - x: `class`
 - y: ?? **count** 不在原本的 `mpg` 資料中
 
@@ -366,12 +355,19 @@ ggplot(data = mpg) +
 1. 原本可能在 Excel 算
 2. R 幫你算 `dplyr::summarise()`
 3. ggplot2 `geom_bar` 幫你算
+    - `?geom_bar` 的預設 `stat` 是 "count"
 
-=> `?geom_bar` 的預設 `stat` 是 "count"
+
+- 有些 Geom (例如 scatterplot) 畫的是 **raw value** (stat_identity)
+- 有些 Geom (例如 `geom_bar()`) 會自動幫你計算新的 stat (e.g., `count`) 以供畫圖
+    - 使用 `geom_<xxx>()` 時，要注意預設的 stat 是什麼
+    - 若不計算 stat: `stat = "identity"`
 
 <img src="img/bar-stats.png" style="max-height:auto; max-width:100%;">
 
-#### Stats 是怎麼幫你算出來的
+Stats 是怎麼幫你算出來的？
+
+**`stat_<xxx>()`**
 
 <img src="img/visualization-stat-bar-mpg.png" style="height:520px; max-width:100%;">
 
@@ -405,6 +401,11 @@ hint: `stat = "identity"`
 d <- mpg %>% 
   group_by(class) %>% 
   summarise(n = n())
+
+# Or use tally() the same:
+d <- mpg %>% 
+  group_by(class) %>% 
+  tally()
 d
 
 ggplot(data = d) +
@@ -741,17 +742,17 @@ ggplot2 的繪圖流程
 4. **Position** (preposition): Scales, Coord, Facet
 5. **Theme**
 
-視覺化流程 (非常重要！)
+<!-- 視覺化流程 (非常重要！) -->
 
-+ Issue: 這張圖表想解決的問題是什麼？
-+ Variables
-    - variables needed from the data
-+ Geoms
-    - **bar chart**, **line chart**, **heat map**, ...
-+ Aesthetic Mapping
-    - x:
-    - y: 
-    - ...
+<!-- + Issue: 這張圖表想解決的問題是什麼？ -->
+<!-- + Variables -->
+<!--     - variables needed from the data -->
+<!-- + Geoms -->
+<!--     - **bar chart**, **line chart**, **heat map**, ... -->
+<!-- + Aesthetic Mapping -->
+<!--     - x: -->
+<!--     - y:  -->
+<!--     - ... -->
 
 ## HW: 畫自己的圖
 
@@ -777,9 +778,9 @@ ggplot2 的繪圖流程
 
 #### Data Cleansing (ETL)
 
-- dplyr
-- tidyr
-- broom
+- `dplyr`
+- `tidyr`
+- `broom`
 
 #### ggplot2 Cookbook and Documentation
 
@@ -826,9 +827,9 @@ ggplot2 的繪圖流程
 - [The Data Visualisation Catalogue](http://www.datavizcatalogue.com/index.html): 各種圖表類型範例
 - [The Economist - Graphic detail](http://www.economist.com/blogs/graphicdetail): 看經濟學人如何用圖表說故事
 
-#### 視覺化心法
+<!-- #### 視覺化心法 -->
 
-- [junkcharts](http://junkcharts.typepad.com/)
-- [Stephen Few - Perceptual Edge](http://www.perceptualedge.com/examples.php)
-- [資料視覺化](hhttp://blog.infographics.tw/category/%E5%BF%83%E6%B3%95/)
+<!-- - [junkcharts](http://junkcharts.typepad.com/) -->
+<!-- - [Stephen Few - Perceptual Edge](http://www.perceptualedge.com/examples.php) -->
+<!-- - [資料視覺化](hhttp://blog.infographics.tw/category/%E5%BF%83%E6%B3%95/) -->
 
