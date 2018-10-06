@@ -1,30 +1,25 @@
 # 資料視覺化實戰 | Data Viz 101 : How to communicate with your data
 
-## 1-4 Tidy data with R - tidyvers
+## 1-4 [Tidy data with R - tidyvers](lecture-notes/R/R_tidydata.html)
 
 - a-chien.blogspot.com/2017/07/tidy-data.html
 
-## 1-5 Tidy data with Python - Pandas
+## 1-5 [Tidy data with Python - Pandas](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_tidy_data_pivot_unpivot.ipynb)
 
 - https://tomaugspurger.github.io/modern-5-tidy.html
 - http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/
 
-## 2-3 R - 環境設置 & 中文字型設置
+## 2-3 [R - 環境設置 & 中文字型設置](lecture-notes/R/ggplot2_chinese_font.html)
 
-## 2-4 ggplot2 基礎
+## 2-4 [ggplot2 基礎](lecture-notes/R/ggplot2_intro.html)
 
-## 2-5 ggplot2 教學 1：Movie
+## 2-5 [ggplot2 教學 1：7-11 + Movie](lecture-notes/R/#)
 
-## 2-6 ggplot2 教學 2：7-11
-
-## 3-4 Pandas viz 基礎
+## 3-4 [Pandas viz 基礎](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_viz_tutorial.ipynb)
 
 - [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
 
-## 3-5 Pandas viz 教學 1：Lottery
-
-## 3-6 Pandas viz 教學 2：Salary
-
+## [3-5 Pandas viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/#)
 
 ## 4-1 好圖表要素 1 : 什麼是好的圖表？
 
@@ -53,7 +48,7 @@
 - 書裡面的範例
 - 標題很重要
 
-## 4-6 修正一張歪圖 : Chart junk 圖形修正實作
+## 4-6 [修正一張歪圖 : Chart junk 圖形修正實作](lecture-notes/R/fix_charjunk.R)
 
 - 範例：公司生產力
 - ggplot2 實作
