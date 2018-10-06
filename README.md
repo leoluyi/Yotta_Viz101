@@ -4,7 +4,7 @@ How to communicate with your data
 
 ## 1-4 [Tidy data with R - tidyverse](lecture-notes/R/R_tidydata.html)
 
-- a-chien.blogspot.com/2017/07/tidy-data.html
+- https://a-chien.blogspot.com/2017/07/tidy-data.html
 
 ## 1-5 [Tidy data with Python - Pandas](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_tidy_data_pivot_unpivot.ipynb)
 
