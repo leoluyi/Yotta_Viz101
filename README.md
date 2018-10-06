@@ -4,24 +4,20 @@ How to communicate with your data
 
 ## 1-4 [Tidy data with R - tidyverse](lecture-notes/R/R_tidydata.html)
 
-- https://a-chien.blogspot.com/2017/07/tidy-data.html
-
 ## 1-5 [Tidy data with Python - Pandas](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_tidy_data_pivot_unpivot.ipynb)
-
-- https://tomaugspurger.github.io/modern-5-tidy.html
-- http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/
 
 ## 2-3 [R - 環境設置 & 中文字型設置](lecture-notes/R/ggplot2_chinese_font.html)
 
-## 2-4 [ggplot2 基礎](lecture-notes/R/ggplot2_intro.html)
+- Install R and RStudio
+- ggplot2 中文字型設置
 
-## 2-5 [ggplot2 教學 1：7-11 + Movie](lecture-notes/R/#)
+## 2-4 [ggplot2 Viz 基礎](lecture-notes/R/ggplot2_intro.html)
 
-## 3-4 [Pandas viz 基礎](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_viz_tutorial.ipynb)
+## 2-5 [ggplot2 Viz 教學 1：7-11 + Movie](lecture-notes/R/#)
 
-- [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
+## 3-4 [Pandas Viz 基礎](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_viz_tutorial.ipynb)
 
-## 3-5 [Pandas viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/#)
+## 3-5 [Pandas Viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/#)
 
 ## 4-1 好圖表要素 1 : 什麼是好的圖表？
 
@@ -71,3 +67,6 @@ How to communicate with your data
 - [plotlyblog](https://plotlyblog.tumblr.com/post/97004982472/5-plots-on-gender-you-have-to-see)
 - [python-graph-gallery](https://python-graph-gallery.com/)
 - [seaborn new plot](http://pbpython.com/seaborn09.html)
+- [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
+- https://tomaugspurger.github.io/modern-5-tidy.html
+- http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/

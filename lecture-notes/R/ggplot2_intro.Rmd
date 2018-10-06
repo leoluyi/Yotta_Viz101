@@ -318,6 +318,9 @@ ggplot(data = mpg) +
   geom_bar(mapping = aes(x = class))
 ```
 
+
+#### 表格與視覺化的關聯
+
 在畫圖之前，你可能要先想到畫出這樣的表格：
 
 ```{r, echo=FALSE}
@@ -327,23 +330,11 @@ mpg %>%
   knitr::kable()
 ```
 
-#### 表格與視覺化的關聯
-
 - 表格就是一種視覺化的方式，有時候一張好的表格資訊就很清楚
 - 畫圖只是將這些資訊再強調出來
 
 <img src="img/mpg-table-viz.png" style="height:540px; max-width:100%;">
 
-#### Try Bar Charts
-
-- 填滿顏色 `fill`
-
-(錯誤示範：不建議同一變數 mapping 多個 aes)
-
-```{r}
-ggplot(data = mpg) +
-  geom_bar(mapping = aes(x = class, fill = class))
-```
 
 ### Stats (Geom 的一體兩面)
 
@@ -465,8 +456,7 @@ ggplot(data = mpg, aes(x = class)) +
 ```
 
 
-- 各種車型的油耗效率
-- **boxplots**: plot quartiles.
+- **boxplots**: plot quartiles. (看各種車型的油耗分佈)
 
 ```{r}
 ggplot(data = mpg) +
@@ -493,6 +483,20 @@ ggplot(data = mpg) +
 
 
 ### (附錄) Positions：當圖形在位置打架時要怎麼辦？
+
+
+#### Try Bar Charts
+
+- 填滿顏色 `fill`
+
+(錯誤示範：不建議同一變數 mapping 多個 aes)
+
+```{r}
+ggplot(data = mpg) +
+  geom_bar(mapping = aes(x = class, fill = class))
+```
+
+#### geom_bar(position = ?)
 
 - `?geom_bar`
 - 堆疊：`position = "stack"` (default)
@@ -637,14 +641,16 @@ ggplot(data = mpg) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
-- 原則：**一個座標平面(方格)最好不要超過三個變數**
+- 原Facet 小結
+
+則：**一個座標平面(方格)最好不要超過三個變數**
 - Don't [overplotting](http://www.perceptualedge.com/articles/visual_business_intelligence/over-plotting_in_graphs.pdf)
 - 拆出類別變數 (nominal) 放在個別的小方格 (facets)
 
 > 當變數很多時 Faceting 就是你最好的朋友！
 
 
-表格：
+**4. 其他做法：例如表格**
 
 ```{r}
 mpg %>% 
