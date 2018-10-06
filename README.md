@@ -1,6 +1,6 @@
 # 資料視覺化實戰 | Data Viz 101 : How to communicate with your data
 
-## 1-4 [Tidy data with R - tidyvers](lecture-notes/R/R_tidydata.html)
+## 1-4 [Tidy data with R - tidyverse](lecture-notes/R/R_tidydata.html)
 
 - a-chien.blogspot.com/2017/07/tidy-data.html
 
