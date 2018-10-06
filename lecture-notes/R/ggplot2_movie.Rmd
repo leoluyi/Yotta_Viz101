@@ -1,11 +1,13 @@
 ---
 title: "Yotta 資料視覺化實戰"
-subtitle: "ggplot2 - 711"
+subtitle: "ggplot2 - movie + 711"
 author: "木刻思 - YJ"
 output:
   prettydoc::html_pretty:
     theme: architect
     highlight: github
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -39,9 +41,55 @@ old_theme <- theme_set(theme_light())
 ![](img/import-data-2.png)
 ![](img/import-data-3.png)
 
+## 7-11 dataset
+
+```{r}
+stores <- read_csv("http://bit.ly/711-stores")
+
+stores %>% 
+  ggplot(aes(x = city_name)) +
+  geom_bar() +
+  theme(text = element_text(family = "STHeiti"))
+```
+
+#### 不同縣市的店家數
+
+#### ATM vs isHotDog
+
+#### 地圖
+
 ## Movie dataset
 
 ```{r}
-movie <- read_
+movie <- read_csv("http://bit.ly/movie-main") %>% 
+  mutate(movie_id = movie_id %>% as.character)
+
+genre <- read_csv("http://bit.ly/movie-genre") %>% 
+  mutate(movie_id = movie_id %>% as.character)
+
+directors <- read_csv("http://bit.ly/movie-directors") %>% 
+  mutate(movie_id = movie_id %>% as.character,
+         star_id = star_id %>% as.character)
+
+stars <- read_csv("http://bit.ly/movie-stars") %>% 
+  mutate(movie_id = movie_id %>% as.character,
+         star_id = star_id %>% as.character)
 ```
+
+#### duration histogram
+
+
+#### Top movies: imdb_score >= 9
+
+
+#### 時間長度 vs 電影類型
+
+
+#### star 票房毒藥? imdb_score
+
+
+#### 電影類型 genre vs imdb_score
+
+
+#### 各月份的電影上映數 + 類型
 

@@ -24,13 +24,22 @@ knitr::opts_chunk$set(warning = FALSE,
 
 ```
 
+## Packages
+
+```{r}
+library(magrittr)
+library(readr)
+library(tidyr)
+library(dplyr)
+```
+
 ## Defining tidy data (long-format)
 
 1. Each variable forms a column.
 2. Each observation forms a row.
 3. Each type of observational unit forms a table.
 
-**Tools for reshaping dataframe:**
+### Tools for reshaping dataframe
 
 | Packages     | to long | to wide                        |
 |--------------|---------|--------------------------------|
@@ -40,25 +49,19 @@ knitr::opts_chunk$set(warning = FALSE,
 | spreadsheets | unpivot | pivot                          |
 | databases    | fold    | unfold                         |
 
-Example:
+### Example dataset
 
-```{r}
-library(magrittr)
-library(tidyr)
-library(dplyr)
-library(readr)
+**Wide data**
 
+```{r, echo=FALSE}
 # Wide data
 preg <- read_csv("http://bit.ly/preg-wide1")
 preg2 <- read_csv("http://bit.ly/preg-wide2")
-```
-
-```{r, echo=FALSE}
 knitr::kable(preg)
 knitr::kable(preg2)
 ```
 
-Long data
+**Long data**
 
 ```{r echo=FALSE}
 preg_long <- preg %>% 
@@ -69,35 +72,71 @@ knitr::kable(preg_long)
 ```
 
 
-## Tidying
+## Tidying: Tidyr variables
+
+### 起手式
 
 1. Specifying **variables** and **values**. (it depends)
-2. Put all **values** in the cells.
-3. Put **variables** back to columns.
+2. `gather()`: Put all **values** in the cells.
+3. `spread()`: Put **variables** back to columns.
 
-### Tidyr variables
 
-#### `gather(key, value, ...cols_to_gather)` 
+### gather: to long
+
+`data %>% gather(key, value, ...cols_to_gather)` 
 
 ![](img/gather.png)
 
-#### `spread(data, key, value, fill = NA, convert = FALSE, drop = TRUE, sep = NULL)`
+
+```{r}
+df_wide <- read_csv("http://bit.ly/country-year-wide")
+df_wide
+
+df_wide %>% gather(key = "year", value = "cases", -country)
+```
+
+### spread: to wide
+
+`data %>% spread(key, value, fill = NA, convert = FALSE, drop = TRUE, sep = NULL)`
 
 ![](img/spread.png)
 
-#### `seperate()`
+```{r}
+df_long <- read_csv("http://bit.ly/cases-long")
+df_long
+
+df_long %>% 
+  spread(key = type, value = count)
+```
+
+### seperate: 分割一個 cell 多個值
+
+`data %>% seperate(col, into, sep)`
+
+容易發生在源頭是 Excel 的資料
 
 ![](img/seperate.png)
 
-#### `seperate_rows()`
+```{r}
+df_to_sep <- read_csv("http://bit.ly/sep-raw")
+df_to_sep
+
+df_to_sep %>% 
+  separate(rate, into = c("cases", "pop"), sep = "/")
+```
+
+`data %>% seperate_rows(sep)` == `seperate %>% gather`
 
 ![](img/seperate_rows.png)
 
-#### `unite()`
+```{r}
+df_to_sep %>% 
+  separate_rows(rate, sep = "/")
+```
 
-![](img/unite.png)
+### 狀況1: 欄位名稱是值 (dataset: pew)
 
-### 狀況1: 欄位名稱是值
+容易發生在源頭是 Excel 的資料
 
 ```{r}
 pew <- read_csv("http://bit.ly/pew-raw")
@@ -106,7 +145,6 @@ pew <- read_csv("http://bit.ly/pew-raw")
 ```{r, echo=FALSE}
 head(pew) %>% knitr::kable(escape = F)
 ```
-
 
 3 variables:
 
@@ -122,12 +160,32 @@ pew %>%
   gather(key = income, value = frequency, -religion)
 ```
 
+### 狀況2: 複合型欄位名 (dataset: tb)
 
-### 狀況2: 一個欄位中有多個變數的值
 
-容易發生在源頭是 Excel 的資料
+```{r}
+tb <- read_csv("http://bit.ly/tb-raw")
+tb
 
-### 狀況3: 
+tb %>% 
+  gather(key = "sex_and_age", value = "cases", m04:fu) %>% 
+  drop_na(cases) %>% 
+  separate(sex_and_age, into = c("sex", "age"), sep = 1)
+```
+
+### 狀況3: 欄位散佈在欄和列 (dataset: weather)
+
+```{r}
+weather <- read_csv("http://bit.ly/weather-raw")
+weather
+
+weather %>%
+  gather("day", "value", d1:d31, na.rm = TRUE) %>% 
+  mutate(day = readr::parse_number(day)) %>%
+  select(id, year, month, day, element, value) %>%
+  arrange(id, year, month, day) %>% 
+  spread(key = element, value = value)
+```
 
 
 

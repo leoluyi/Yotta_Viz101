@@ -29,6 +29,7 @@ library(tidyr)
 library(ggplot2)
 library(ggrepel)
 library(cowplot)
+library(ggthemes)
 
 old_theme <- theme_set(theme_light())
 ```
@@ -350,14 +351,12 @@ ggplot(data = mpg) +
 - 有些 Geom (例如 barplot)會計算新的 stat (e.g., count) 以供畫圖
 - 使用 `geom_<xxx>()` 時，要注意預設的 stat 是什麼
 
-> 每個成功的 **Geom** 背後都有一個偉大的 **Stat**
-
 `stat = "identity"`
 
 <img src="img/visualization-stat-point.png" style="height:520px; max-width:100%;">
 
 
-回頭來看 Aesthetic Mapping
+#### 回頭來看 Aesthetic Mapping
 
 - x: `class`
 - y: ?? **count** 不在原本的 `mpg` 資料中
@@ -376,11 +375,28 @@ ggplot(data = mpg) +
 
 <img src="img/visualization-stat-bar-mpg.png" style="height:520px; max-width:100%;">
 
-#### 先手動處理 stats 再畫圖
+#### 先手動處理 stats 再畫圖: `dplyr`
+
+**五大動詞**
+
+- `mutate()` 計算 (新/舊) 欄位
+- `select()` 選擇欄位
+- `filter()` 篩選列條件
+- `summarise()` 彙整計算多個值輸出一個值 (mean, sum, ...)
+- `arrange()` 排序
+- `group_by()`
+
+**常用**
+
+- SQL - where == `filter()`
+- SQL - group by + count == `group_by() %>% tally(sort = FALSE)`
+- SQL - group by + mean == `group_by() %>% summarize(mean_x = mean(x))`
+- SQL - order by == `arrange()`
+
+**Exercise**
 
 - Plot bar chart with `cut` in dataset `diamonds`
-
-用 `dplyr::summarise()` 算出 count 這個變數，再用 `ggplot2` 畫圖
+- 用 `dplyr::summarise()` 算出 count 這個變數，再用 `ggplot2` 畫圖
 
 hint: `stat = "identity"`
 
@@ -419,8 +435,10 @@ ggplot(data = d) +
 
 #### 沒有排序的 bar chart 很難看
 
-- 要怎麼排序？
-- `reorder(<要排序的變數>, <參照大小>)`
+要怎麼排序？
+
+1. 先手動計算
+2. `reorder(<被排序的變數>, <參照大小的變數>)`
 
 ```{r, collapse=TRUE, fig.width=6}
 d <- mpg %>% 
@@ -607,13 +625,14 @@ mpg %>%
 
 - x: class
 - y: count
-- <s>fill</s> 刪掉多餘的 mapping
+- fill: 多餘的 mapping，但為了強調不同車型，還是加入
 - facet: manufacturer
 
-```{r, fig.width=10, fig.asp=0.8}
+```{r car-facet, fig.width=10, fig.asp=0.8}
 ggplot(data = mpg) +
-  geom_bar(mapping = aes(x = class)) +
+  geom_bar(mapping = aes(x = class, fill = class)) +
   facet_wrap( ~ manufacturer, ncol = 4) +
+  scale_fill_viridis_d() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -776,7 +795,7 @@ ggplot2 的繪圖流程
 - [sjPlot](http://www.strengejacke.de/sjPlot/): 快速繪製統計模型和表格 (html output)
 - [sjmisc](https://github.com/sjPlot/sjmisc): Utility and recode functions for R and sjPlot. 處理問卷 variable, label, spss file, ...
 - [dygraphs](http://rstudio.github.io/dygraphs/): (RStudio) 動態繪製 time-series data
-- [leaflet](https://rstudio.github.io/leaflet/): [Leaflet](http://leafletjs.com/) 地圖
+- [leaflet](https://rstudio.github.io/leaflet/): [Leaflet.js](http://leafletjs.com/) 地圖
 - [ggvis](http://ggvis.rstudio.com/): (hadley) 動態圖表，可搭配 Shiny，尚未有完整應用體系
 - [rCharts](https://github.com/ramnathv/rCharts): (停止開發很久) 動態圖表
 
