@@ -13,11 +13,11 @@ How to communicate with your data
 
 ## 2-4 [ggplot2 Viz 基礎](lecture-notes/R/ggplot2_intro.html)
 
-## 2-5 [ggplot2 Viz 教學 1：7-11 + Movie](lecture-notes/R/ggplot2_7-11+movie.html)
+## 2-5 [ggplot2 Viz 教學：7-11 + Movie](lecture-notes/R/ggplot2_7-11+movie.html)
 
 ## 3-4 [Pandas Viz 基礎](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_viz_tutorial.ipynb)
 
-## 3-5 [Pandas Viz 教學 1：Lottery + 2：Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/lottery_salary.ipynb)
+## 3-5 [Pandas Viz 教學：Lottery + Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/lottery_salary.ipynb)
 
 ## 4-1 好圖表要素 1 : 什麼是好的圖表？
 
