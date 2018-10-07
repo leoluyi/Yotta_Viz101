@@ -7,6 +7,8 @@ output:
     toc: yes
     theme: architect
     highlight: github
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +28,7 @@ geom_text(family = "STHeiti")
 輸出要設定 `type = "cairo"`:
 
 ```{r, eval=FALSE}
-ggsave(device = "png", type = "cairo")`
+ggsave(device = "png", type = "cairo")
 ```
 
 範例:

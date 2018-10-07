@@ -1,0 +1,223 @@
+---
+title: "Yotta 資料視覺化實戰"
+subtitle: "ggplot2 - movie + 711"
+author: "木刻思 - YJ"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE,
+                      echo = TRUE,
+                      message = FALSE,
+                      collapse = TRUE,
+                      comment = "#>",
+                      fig.align = 'center',
+                      fig.width = 6,
+                      fig_caption = FALSE,
+                      cache=FALSE)
+```
+
+## Load packages
+
+```{r}
+library(magrittr)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggrepel)
+
+old_theme <- theme_set(theme_light())
+```
+
+## 如何匯入資料
+
+![](img/import-data-1.png)
+![](img/import-data-2.png)
+![](img/import-data-3.png)
+
+## 7-11 dataset
+
+```{r}
+stores <- read_csv("http://bit.ly/711-stores")
+stores
+```
+
+#### 不同縣市 (city_name) 的店家數
+
+```{r}
+stores %>% 
+  ggplot(aes(x = reorder(city_name, table(city_name)[city_name]))) +
+  geom_bar() +
+  xlab(NULL) +
+  coord_flip() +
+  theme(text = element_text(family = "Noto Sans CJK TC")) +
+  ggtitle("各縣市店家數")
+```
+
+#### 縣市 (city_name) vs (isATM, isHotDog)
+
+```{r}
+stores %>% 
+  ggplot(aes(x = reorder(city_name, table(city_name)[city_name]), 
+             fill = isATM)) +
+  geom_bar() +
+  xlab(NULL) +
+  coord_flip() +
+  theme(text = element_text(family = "Noto Sans CJK TC")) +
+  ggtitle("各縣市店家數")
+```
+
+```{r}
+stores %>% 
+  ggplot(aes(x = reorder(city_name, table(city_name)[city_name]), 
+             fill = isHotDog)) +
+  geom_bar() +
+  xlab(NULL) +
+  coord_flip() +
+  theme(text = element_text(family = "Noto Sans CJK TC")) +
+  ggtitle("各縣市店家數")
+```
+
+#### 縣市 (city_name)  vs "is" columns
+
+```{r, fig.width = 8}
+d <- stores %>% 
+  select(city_name, starts_with("is")) %>% 
+  gather(key = "is_cols", value = "yn", -city_name, na.rm = TRUE) %>%
+  mutate(yn = yn %>% recode(Y = 1, N = 0)) %>% 
+  group_by(city_name, is_cols) %>% 
+  summarise(prop = mean(yn))
+
+d %>% head()
+
+d %>% 
+  ggplot(aes(x = city_name, y = is_cols, fill = prop)) +
+  geom_tile(color = "white") +
+  scale_fill_distiller(direction = 1) +
+  scale_x_discrete(name = NULL, position = "top") +
+  theme(
+    text = element_text(family = "Noto Sans CJK TC"),
+    axis.text.x = element_text(angle = 90, hjust = 1)
+  ) +
+  ggtitle("各縣市店家配備率")
+```
+
+
+## Movie dataset
+
+```{r}
+movie <- read_csv("http://bit.ly/movie-main") %>% 
+  mutate(movie_id = movie_id %>% as.character)
+
+genre <- read_csv("http://bit.ly/movie-genre") %>% 
+  mutate(genre_id = genre_id %>% as.character,
+         movie_id = movie_id %>% as.character) %>% 
+  rename(genre_name = name)
+
+directors <- read_csv("http://bit.ly/movie-directors") %>% 
+  mutate(movie_id = movie_id %>% as.character,
+         star_id = star_id %>% as.character)
+
+stars <- read_csv("http://bit.ly/movie-stars") %>% 
+  mutate(movie_id = movie_id %>% as.character,
+         star_id = star_id %>% as.character)
+```
+
+#### duration histogram
+
+```{r}
+movie %>% 
+  filter(duration > 1) %>% 
+  ggplot(aes(x = duration)) +
+  geom_histogram(binwidth = 10, color = "white") +
+  scale_x_continuous(breaks = seq(0, 250, 30),
+                     minor_breaks = seq(0, 250, 10))
+```
+
+#### Top movies: imdb_score >= 9
+
+```{r}
+movie %>% 
+  ggplot(aes(x = imdb_score)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = seq(0, 10, 1))
+```
+
+```{r}
+movie %>% 
+  filter(imdb_score > 7.5) %>% 
+  select(name_in_ch, imdb_score)
+```
+
+#### 電影類型
+
+```{r}
+genre %>% 
+  group_by(genre_name) %>% 
+  tally(sort = TRUE)
+```
+
+#### 時間長度 vs 電影類型
+
+```{r}
+d <- movie %>% 
+  filter(duration > 1) %>% 
+  select(movie_id, duration) %>% 
+  inner_join(genre, by = "movie_id") %>% 
+  group_by(genre_name) %>%
+  summarise(
+    min_duration = min(duration),
+    max_duration = max(duration),
+    mean_duration = mean(duration)
+  ) %>% 
+  mutate(genre_name = reorder(genre_name, mean_duration))
+d
+
+d %>% 
+  gather(key = "stat", value = "value", -genre_name) %>%
+  ggplot() +
+  geom_segment(
+    data = d,
+    aes(x = min_duration, xend = max_duration,
+        y = genre_name, yend = genre_name),
+    color = "lightgrey",
+    size = 3) +
+  geom_point(aes(y = genre_name, x = value, color = stat),
+             size = 3, shape = 15) +
+  scale_x_continuous(breaks = seq(0, 220, 30),
+                     minor_breaks = seq(0, 220, 10)) +
+  theme(text = element_text(family = "Noto Sans CJK TC"),
+        legend.position = "top")
+```
+
+#### 各月份的電影上映數 + 類型
+
+```{r, fig.width = 8}
+d <- movie %>% 
+  filter(duration > 1) %>% 
+  select(movie_id, release_date_str) %>% 
+  inner_join(genre, by = "movie_id") %>% 
+  mutate(YYMM = scales::date_format("%y-%m")(release_date_str)) %>%
+  filter(YYMM >= "17-01" & YYMM < "18-01") %>% 
+  group_by(genre_name, YYMM) %>% 
+  tally()
+
+d
+
+d %>% 
+  ggplot(aes(YYMM, y = n)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ genre_name, ncol = 3) +
+  ggtitle("每月電影上映數") +
+  theme(
+    text = element_text(family = "Noto Sans CJK TC"),
+    axis.text.x = element_text(angle = 90, hjust = 1)
+  )
+```
+
