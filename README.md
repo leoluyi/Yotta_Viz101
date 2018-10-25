@@ -15,6 +15,8 @@ How to communicate with your data
 
 ## 2-5 [ggplot2 Viz 教學：7-11 + Movie](lecture-notes/R/ggplot2_7-11+movie.html)
 
+## 3-3 [Python - Jupyter Notebook  & 中文字型設置](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/matplotlib_chinese_font.ipynb)
+
 ## 3-4 [Pandas Viz 基礎](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/pandas_viz_tutorial.ipynb)
 
 ## 3-5 [Pandas Viz 教學：Lottery + Salary](https://nbviewer.jupyter.org/github/leoluyi/Yotta_Viz101/blob/master/lecture-notes/python/lottery_salary.ipynb)
