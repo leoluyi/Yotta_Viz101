@@ -70,5 +70,5 @@ How to communicate with your data
 - [python-graph-gallery](https://python-graph-gallery.com/)
 - [seaborn new plot](http://pbpython.com/seaborn09.html)
 - [beautiful-data-visualizations-in-python-with-matplotlib](http://spartanideas.msu.edu/2014/06/28/how-to-make-beautiful-data-visualizations-in-python-with-matplotlib/)
-- https://tomaugspurger.github.io/modern-5-tidy.html
-- http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/
+- [Modern Pandas (Part 5): Tidy Data](https://tomaugspurger.github.io/modern-5-tidy.html)
+- [pandas-and-tidy-data](http://shzhangji.com/blog/2017/09/30/pandas-and-tidy-data/)

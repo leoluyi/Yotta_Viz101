@@ -11784,16 +11784,16 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><a href="#Tidy-data-with-Pandas">Tidy-data-with-Pandas</a></li>
-<li><a href="#Long-data-(Unpivot">Long data</a>:-%E6%AC%84%E4%BD%8D%E5%90%8D%E8%AE%8A%E6%88%90%E5%80%BC)<ul>
-<li><a href="#1.-Column-headers-are-values,-not-variable-names-(dataset:-Pew">1. Column headers are values, not variable names (dataset: Pew)</a>)</li>
-<li><a href="#2.-Multiple-variables-stored-in-one-column-(dataset:-tb">2. Multiple variables stored in one column (dataset: tb)</a>)</li>
-<li><a href="#3.-Variables-are-stored-in-both-rows-and-columns-(dataset:-weather">3. Variables are stored in both rows and columns (dataset: weather)</a>)</li>
+<li><a href="#Tidy-data-with-Pandas">Tidy data with Pandas</a></li>
+<li><a href="#Long-data---Unpivot">Long data</a><ul>
+<li><a href="#1.-Column-headers-are-values,-not-variable-names---dataset:-Pew">1. Column headers are values, not variable names (dataset: Pew)</a></li>
+<li><a href="#2.-Multiple-variables-stored-in-one-column---dataset:-tb">2. Multiple variables stored in one column (dataset: tb)</a></li>
+<li><a href="#3.-Variables-are-stored-in-both-rows-and-columns---dataset:-weather">3. Variables are stored in both rows and columns (dataset: weather)</a></li>
 </ul>
 </li>
-<li><a href="#">Wide data</a><ul>
-<li><a href="#Grouping-and-summarize-+-unstack(">Grouping and summarize + unstack()</a>)</li>
-<li><a href="#pivot(">pivot() / pivot_table()</a>-/-pivot_table())</li>
+<li><a href="#Wide-data---Pivot">Wide data</a><ul>
+<li><a href="#Grouping-and-summarize-+-unstack">Grouping and summarize + unstack()</a></li>
+<li><a href="#pivot-/-pivot_table">pivot() / pivot_table()</a></li>
 </ul>
 </li>
 </ul>
@@ -11826,10 +11826,10 @@ div#notebook {
 </ol>
 <h4 id="To-long-&#10132;-melt-&#27396;&#20301;&#21517;&#31281;&#35722;&#25104;&#20540;">To long &#10132; <code>melt</code> &#27396;&#20301;&#21517;&#31281;&#35722;&#25104;&#20540;<a class="anchor-link" href="#To-long-&#10132;-melt-&#27396;&#20301;&#21517;&#31281;&#35722;&#25104;&#20540;">&#182;</a></h4><ul>
 <li><strong>id_vars (key)</strong>: 識別 record 的最小單位的變數 (或變數的組合) =&gt; 不動</li>
-<li><strong>value_vars (measure_var)</strong>: 要折下來的欄位們 (default will use all non id_vars variables)</li>
-<li><strong>var_name</strong>: 舊欄位折下來後</li>
-<li><strong>value_name</strong>: 舊欄位的值疊成單一欄位</li>
-<li><strong>col_level</strong>: If columns are a MultiIndex then use this level to melt</li>
+<li><strong>value_vars (measure_var)</strong>: 要折下來的欄位們 (Default: will use all <strong>non-<code>id_vars</code></strong> variables)</li>
+<li>var_name: (新欄位名) 舊欄位折下來後</li>
+<li>value_name: (新欄位名) 舊欄位的值疊成單一欄位</li>
+<li>col_level: If columns are a MultiIndex then use this level to melt</li>
 </ul>
 <h4 id="To-wide-&#10132;-pivot_table-(cast)-&#20540;&#35722;&#25104;&#27396;&#20301;&#21517;">To wide &#10132; <code>pivot_table</code> (cast) &#20540;&#35722;&#25104;&#27396;&#20301;&#21517;<a class="anchor-link" href="#To-wide-&#10132;-pivot_table-(cast)-&#20540;&#35722;&#25104;&#27396;&#20301;&#21517;">&#182;</a></h4><ul>
 <li><strong>index (key)</strong>: 識別 record 的最小單位的變數 (或變數的組合)<ul>
@@ -11893,7 +11893,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Long-data-(Unpivot):-&#27396;&#20301;&#21517;&#35722;&#25104;&#20540;">Long data (Unpivot): &#27396;&#20301;&#21517;&#35722;&#25104;&#20540;<a class="anchor-link" href="#Long-data-(Unpivot):-&#27396;&#20301;&#21517;&#35722;&#25104;&#20540;">&#182;</a></h2><p>Pandas methods:</p>
+<h2 id="Long-data---Unpivot">Long data - Unpivot<a class="anchor-link" href="#Long-data---Unpivot">&#182;</a></h2><blockquote><p>欄位名變成值</p>
+</blockquote>
+<p>Pandas methods:</p>
 <div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
 </pre></div>
 <ul>
@@ -12209,7 +12211,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="1.-Column-headers-are-values,-not-variable-names-(dataset:-Pew)">1. Column headers are values, not variable names (dataset: Pew)<a class="anchor-link" href="#1.-Column-headers-are-values,-not-variable-names-(dataset:-Pew)">&#182;</a></h3><p>This dataset explores the relationship between income and religion in the US. It comes from a report produced by the Pew Research Center.</p>
+<h3 id="1.-Column-headers-are-values,-not-variable-names---dataset:-Pew">1. Column headers are values, not variable names - dataset: Pew<a class="anchor-link" href="#1.-Column-headers-are-values,-not-variable-names---dataset:-Pew">&#182;</a></h3><p>This dataset explores the relationship between income and religion in the US. It comes from a report produced by the Pew Research Center.</p>
 <p><strong>3 variables:</strong></p>
 <ul>
 <li>religion</li>
@@ -12731,7 +12733,7 @@ Name: frequency, dtype: int64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="2.-Multiple-variables-stored-in-one-column-(dataset:-tb)">2. Multiple variables stored in one column (dataset: tb)<a class="anchor-link" href="#2.-Multiple-variables-stored-in-one-column-(dataset:-tb)">&#182;</a></h3><p>Tubercolosis Records from World Health Organization
+<h3 id="2.-Multiple-variables-stored-in-one-column---dataset:-tb">2. Multiple variables stored in one column - dataset: tb<a class="anchor-link" href="#2.-Multiple-variables-stored-in-one-column---dataset:-tb">&#182;</a></h3><p>Tubercolosis Records from World Health Organization
 This dataset documents the <strong>count of confirmed tuberculosis cases</strong> by country, year, age and sex.</p>
 <ul>
 <li>Some columns contain multiple values: sex and age.</li>
@@ -13326,7 +13328,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Merge</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Merge - concat()</span>
 <span class="n">tb_long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">tb</span><span class="p">,</span> <span class="n">sex_and_age</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">tb_long</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;sex_and_age&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">tb_long</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -13429,9 +13431,710 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.-Variables-are-stored-in-both-rows-and-columns-(dataset:-weather)">3. Variables are stored in both rows and columns (dataset: weather)<a class="anchor-link" href="#3.-Variables-are-stored-in-both-rows-and-columns-(dataset:-weather)">&#182;</a></h3>
+<h3 id="3.-Variables-are-stored-in-both-rows-and-columns---dataset:-weather">3. Variables are stored in both rows and columns - dataset: weather<a class="anchor-link" href="#3.-Variables-are-stored-in-both-rows-and-columns---dataset:-weather">&#182;</a></h3>
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;http://bit.ly/weather-raw&#39;</span><span class="p">)</span>
+<span class="n">weather</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>element</th>
+      <th>d1</th>
+      <th>d2</th>
+      <th>d3</th>
+      <th>d4</th>
+      <th>d5</th>
+      <th>d6</th>
+      <th>...</th>
+      <th>d22</th>
+      <th>d23</th>
+      <th>d24</th>
+      <th>d25</th>
+      <th>d26</th>
+      <th>d27</th>
+      <th>d28</th>
+      <th>d29</th>
+      <th>d30</th>
+      <th>d31</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27.8</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.5</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>27.3</td>
+      <td>24.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>29.9</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>14.4</td>
+      <td>14.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>10.7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>32.1</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather_long</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">weather</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">],</span>
+             <span class="n">value_vars</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">weather</span><span class="o">.</span><span class="n">columns</span><span class="p">)[</span><span class="mi">4</span><span class="p">:],</span>
+             <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">weather_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>element</th>
+      <th>date</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmin</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmax</td>
+      <td>d1</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather_long</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weather_long</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">weather_long</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">weather_long</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{:4d}</span><span class="s1">-</span><span class="si">{:02d}</span><span class="s1">-</span><span class="si">{:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">weather_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[16]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>element</th>
+      <th>date</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmax</td>
+      <td>2010-01-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmin</td>
+      <td>2010-01-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmax</td>
+      <td>2010-02-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmin</td>
+      <td>2010-02-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmax</td>
+      <td>2010-03-01</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather_long</span> <span class="o">=</span> <span class="n">weather_long</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span>
+<span class="n">weather_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[17]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>date</th>
+      <th>element</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20</th>
+      <td>MX17004</td>
+      <td>2010-12-01</td>
+      <td>tmax</td>
+      <td>29.9</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>MX17004</td>
+      <td>2010-12-01</td>
+      <td>tmin</td>
+      <td>13.8</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MX17004</td>
+      <td>2010-02-02</td>
+      <td>tmax</td>
+      <td>27.3</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MX17004</td>
+      <td>2010-02-02</td>
+      <td>tmin</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>MX17004</td>
+      <td>2010-11-02</td>
+      <td>tmax</td>
+      <td>31.3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather_long</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[18]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">value</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>element</th>
+      <th>tmax</th>
+      <th>tmin</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">MX17004</th>
+      <th>2010-01-30</th>
+      <td>27.8</td>
+      <td>14.5</td>
+    </tr>
+    <tr>
+      <th>2010-02-02</th>
+      <td>27.3</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-03</th>
+      <td>24.1</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-11</th>
+      <td>29.7</td>
+      <td>13.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-23</th>
+      <td>29.9</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weather_long</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;element&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[19]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>element</th>
+      <th>tmax</th>
+      <th>tmin</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th>date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">MX17004</th>
+      <th>2010-01-30</th>
+      <td>27.8</td>
+      <td>14.5</td>
+    </tr>
+    <tr>
+      <th>2010-02-02</th>
+      <td>27.3</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-03</th>
+      <td>24.1</td>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-11</th>
+      <td>29.7</td>
+      <td>13.4</td>
+    </tr>
+    <tr>
+      <th>2010-02-23</th>
+      <td>29.9</td>
+      <td>10.7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -13446,7 +14149,8 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wide-data-(Pivot):-&#20540;&#35722;&#25104;&#27396;&#20301;&#21517;">Wide data (Pivot): &#20540;&#35722;&#25104;&#27396;&#20301;&#21517;<a class="anchor-link" href="#Wide-data-(Pivot):-&#20540;&#35722;&#25104;&#27396;&#20301;&#21517;">&#182;</a></h2><blockquote><p>Not tidy data. 通常用在表格呈現或 Pandas 畫圖</p>
+<h2 id="Wide-data---Pivot">Wide data - Pivot<a class="anchor-link" href="#Wide-data---Pivot">&#182;</a></h2><blockquote><p>值變成欄位名</p>
+<p>Not tidy data. 通常用在表格呈現或 Pandas 畫圖</p>
 </blockquote>
 <p>Pandas methods:</p>
 <ul>
@@ -13454,15 +14158,16 @@ dtype: object</pre>
 </ul>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_unstack.png" width="640"></p>
 <ul>
-<li><code>pivot()</code>:<ul>
-<li>doesn't accept a list for index (key).</li>
+<li><code>pivot(index, columns, values)</code>:<ul>
+<li>doesn't accept a list for <strong>index (key)</strong>.</li>
+<li>NO <code>aggfunc</code>.</li>
 <li>provides general purpose pivoting with various data types (strings, numerics, etc.)</li>
 </ul>
 </li>
-<li><code>pivot_table()</code><ul>
-<li>supports using <strong>multiple columns</strong> for the index (key).</li>
+<li><code>pivot_table(index, columns, values, aggfunc='mean', fill_value=None)</code><ul>
+<li>a generalization of <code>pivot</code> that supports using <strong>multiple columns</strong> for the <strong>index (key)</strong>.</li>
 <li>you can give <code>pivot_table</code> a <strong>list of aggregation functions</strong> using keyword argument <code>aggfunc</code>.</li>
-<li>the default <code>aggfunc</code> is <code>numpy.mean</code>.</li>
+<li>only for pivoting with aggregation of <strong>numeric data</strong>.</li>
 </ul>
 </li>
 <li>Internally, both of them are using <code>reset_index()</code>/<code>stack()</code>/<code>unstack()</code> to do the job.</li>
@@ -13486,7 +14191,7 @@ dtype: object</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Grouping-and-summarize-+-unstack()">Grouping and summarize + unstack()<a class="anchor-link" href="#Grouping-and-summarize-+-unstack()">&#182;</a></h3>
+<h3 id="Grouping-and-summarize-+-unstack">Grouping and summarize + unstack<a class="anchor-link" href="#Grouping-and-summarize-+-unstack">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13500,7 +14205,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">traffic_melted</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -13516,7 +14221,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -13618,7 +14323,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">traffic_melted</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Twin_Cities&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])[</span><span class="s1">&#39;Fatalities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -13634,7 +14339,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[15]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -13662,7 +14367,7 @@ Name: Fatalities, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">traffic_melted</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Twin_Cities&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])[</span><span class="s1">&#39;Fatalities&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
@@ -13678,7 +14383,7 @@ Name: Fatalities, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -13754,7 +14459,7 @@ Name: Fatalities, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;http://bit.ly/titanicdata&#39;</span><span class="p">)</span>
@@ -13772,7 +14477,7 @@ Name: Fatalities, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -13917,7 +14622,7 @@ Name: Fatalities, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -13933,7 +14638,7 @@ Name: Fatalities, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[24]:</div>
 
 
 
@@ -13962,7 +14667,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -13978,7 +14683,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -14002,7 +14707,7 @@ Name: survived, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the same</span>
@@ -14019,7 +14724,7 @@ Name: survived, dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -14043,7 +14748,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
@@ -14059,7 +14764,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -14120,7 +14825,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pclass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">survived</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
@@ -14136,7 +14841,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[28]:</div>
 
 
 
@@ -14197,7 +14902,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -14220,13 +14925,13 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[29]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x113f3ad68&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10dc44c88&gt;</pre>
 </div>
 
 </div>
@@ -14276,7 +14981,7 @@ dtype: int64</pre>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="pivot()-/-pivot_table()">pivot() / pivot_table()<a class="anchor-link" href="#pivot()-/-pivot_table()">&#182;</a></h3>
+<h3 id="pivot-/-pivot_table">pivot / pivot_table<a class="anchor-link" href="#pivot-/-pivot_table">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -14290,7 +14995,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sales_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -14312,7 +15017,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -14390,10 +15095,10 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pivot_table() 可處理 numerical, string 等資料欄位</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pivot() 可處理 numerical, string 等複合類型資料</span>
 <span class="n">sales_df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
                <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rep&#39;</span><span class="p">,</span><span class="s1">&#39;sales&#39;</span><span class="p">])</span>
 </pre></div>
@@ -14408,7 +15113,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[31]:</div>
 
 
 
@@ -14508,10 +15213,10 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pivot_table() 只處理 numerical 資料欄位</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pivot_table() 只處理 numerical 資料</span>
 <span class="n">sales_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
                      <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rep&#39;</span><span class="p">,</span><span class="s1">&#39;sales&#39;</span><span class="p">])</span> <span class="c1"># only sales is pivoted</span>
 </pre></div>
@@ -14526,7 +15231,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt output_prompt">Out[32]:</div>
 
 
 
@@ -14605,7 +15310,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pivot_table() 可選擇多欄位作為 index / columns</span>
@@ -14623,7 +15328,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[33]:</div>
 
 
 
@@ -14713,7 +15418,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># DataError: No numeric types to aggregate</span>
@@ -14738,7 +15443,7 @@ dtype: int64</pre>
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">DataError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-28-03fe8c5c7c00&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-34-03fe8c5c7c00&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-red-fg"># DataError: No numeric types to aggregate</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> sales_df.pivot_table(index=&#39;country&#39;, columns=&#39;year&#39;,
 <span class="ansi-green-fg">----&gt; 3</span><span class="ansi-red-fg">                      values=[&#39;rep&#39;]) # 硬塞 string 會出錯
@@ -14816,7 +15521,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 手動 set_index() + unstack() 連續技</span>
@@ -14833,7 +15538,7 @@ dtype: int64</pre>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[35]:</div>
 
 
 
