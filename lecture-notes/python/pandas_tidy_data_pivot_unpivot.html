@@ -13233,16 +13233,19 @@ div#notebook {
 <h2 id="Long-data---Unpivot">Long data - Unpivot<a class="anchor-link" href="#Long-data---Unpivot">&#182;</a></h2><blockquote><p>欄位名變成值</p>
 </blockquote>
 <p>Pandas methods:</p>
-<div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
-</pre></div>
 <ul>
+<li><code>melt(id_vars, value_vars, var_name='variable', value_name='value')</code><ul>
 <li><strong>id_vars (key)</strong>: 識別 record 的最小單位的變數 (或變數的組合) =&gt; 不動</li>
 <li><strong>value_vars (measure_var)</strong>: 要折下來的欄位們 (Default: will use all <strong>non-<code>id_vars</code></strong> variables)</li>
 <li>var_name: (新欄位名) 舊欄位折下來後</li>
 <li>value_name: (新欄位名) 舊欄位的值疊成單一欄位</li>
 <li>col_level: If columns are a MultiIndex then use this level to melt</li>
 </ul>
+</li>
+</ul>
 <p><a href="https://pandas.pydata.org/pandas-docs/stable/reshaping.html#reshaping-by-melt">https://pandas.pydata.org/pandas-docs/stable/reshaping.html#reshaping-by-melt</a></p>
+<div class="highlight"><pre><span></span><span class="n">df3</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</pre></div>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_melt.png" width="640"></p>
 
 </div>
@@ -15484,7 +15487,7 @@ dtype: object</pre>
 </ul>
 <p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/reshaping_unstack.png" width="640"></p>
 <ul>
-<li><code>pivot(index, columns, values)</code>:<ul>
+<li><code>pivot(index, columns, values)</code><ul>
 <li>doesn't accept a list for <strong>index (key)</strong>.</li>
 <li>NO <code>aggfunc</code>.</li>
 <li>provides general purpose pivoting with various data types (strings, numerics, etc.)</li>
